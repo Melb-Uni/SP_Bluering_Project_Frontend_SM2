@@ -92,15 +92,15 @@ class ProcessQualityPage extends React.Component {
               }
             >
               {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.CONFLUENCE && (
+                this.state.btnSelected == commonConstants.CONFLUENCE && (   //Generate Line Chart for confluence pages
                   <LineChart data={this.props.confluenceData} />
                 )}
               {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.GITHUB && (
+                this.state.btnSelected == commonConstants.GITHUB && (   //Generate Line Chart for GitHub commit
                   <LineChart data={this.props.githubData} />
                 )}
               {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.JIRA && (
+                this.state.btnSelected == commonConstants.JIRA && (     //Generate Line Chart for Jira tickets
                   <LineChart data={this.props.jiraData} />
                 )}
             </Spin>

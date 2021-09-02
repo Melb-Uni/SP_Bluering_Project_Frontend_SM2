@@ -108,6 +108,7 @@ function setTeamInfo(
     });
 }
 
+// Gets data for product quality graph when teamkey is passed
 function getTeamCodeMetrics(teamKey) {
   let url = baseUrl + "/git/metrics/" + teamKey;
 

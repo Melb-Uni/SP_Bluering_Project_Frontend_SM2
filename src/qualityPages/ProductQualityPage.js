@@ -43,6 +43,7 @@ class ProductQualityPage extends React.Component {
 
   componentDidMount() {
     if (this.state.hasConfig) {
+      // Gets data for product quality graph
       this.props.getTeamCodeMetrics(this.props.currentTeamKey);
     }
   }
@@ -110,17 +111,24 @@ class ProductQualityPage extends React.Component {
         {uomHeader("Product Quality")}
         <div role="main">
           <div className="page-inner">
+            {/* Project Name */}
             <Banner projName={this.props.currentTeamName} />
+
+            {/* Alert Message for No Config found */}
             {!this.state.hasConfig && (
               <InformationalNote message={alertConstants.NO_CONFIG} />
             )}
+
+            {/* Product Quality Graph */}
             {this.state.hasConfig &&
               this.props.teamCodeMetrics &&
               this.props.teamCodeMetrics.length != 0 && (
-              <ReverseTable
-              data={this.props.teamCodeMetrics}
-            />
-            )}
+                <ReverseTable
+                  data={this.props.teamCodeMetrics}
+                />
+              )}
+
+            {/* No data alert */}
             {this.state.hasConfig &&
               (!this.props.teamCodeMetrics ||
                 this.props.teamCodeMetrics.length == 0) && (

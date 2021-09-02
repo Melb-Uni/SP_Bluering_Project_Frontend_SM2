@@ -8,14 +8,14 @@ import { userConstants } from "../_constants";
 import { successToast } from "../_utils/toast";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const input = {
+const input = {             //created a style attribute input
   width: "642px",
   margin: "10px auto",
   borderRadius: "4px",
   padding: "4px",
 };
 
-const label = {
+const label = {             //created a style attribute label
   width: "50px",
   textAlign: "left",
   fontWeight: "bold",
@@ -25,7 +25,7 @@ const label = {
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = {          // state object contains properties username and password
       username: "",
       password: "",
       role: -1,
@@ -46,13 +46,13 @@ class LoginPage extends React.Component {
     this.setState({ submitted: true });
     const { username, password } = this.state;
     if (username && password) {
-      this.props.login(username, password);
+      this.props.login(username, password);             //login successful
     }
   }
 
   componentDidMount() {
     if (this.props.isLogout) {
-      successToast(userConstants.LOGOUT_SUCCESS);
+      successToast(userConstants.LOGOUT_SUCCESS);         //logout successful
     }
     console.log(this.props.login);
   }
@@ -61,7 +61,7 @@ class LoginPage extends React.Component {
     const { username, password, submitted } = this.state;
     return (
       <div className="uomcontent">
-        {uomHeader("Welcome to SP")}
+        {uomHeader("Welcome to SP")}                     //Header of Login Page
         <div role="main">
           <div className="page-inner">
             <Banner projName="Login" />
@@ -79,7 +79,7 @@ class LoginPage extends React.Component {
                   className="form-control"
                   name="username"
                   value={username}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange}            // set the new username value to login into system
                   style={input}
                 />
                 {submitted && !username && (
@@ -101,7 +101,7 @@ class LoginPage extends React.Component {
                   className="form-control"
                   name="password"
                   value={password}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange}             // set the new password value to login into system
                   style={input}
                 />
                 {submitted && !password && (
@@ -109,7 +109,7 @@ class LoginPage extends React.Component {
                 )}
               </div>
               <div className="form-group">
-                <a className="button brand" onClick={this.handleSubmit}>
+                <a className="button brand" onClick={this.handleSubmit}>      // submit the username and password and click on login button 
                   Login
                 </a>
                 {this.props.requestLogin && (

@@ -7,6 +7,7 @@ import Table from "../_utils/Table";
 import { alertConstants } from "../_constants";
 import { InformationalNote } from "../_utils/Alert";
 
+
 class CommunicationPage extends React.Component {
   constructor(props) {
     super(props);

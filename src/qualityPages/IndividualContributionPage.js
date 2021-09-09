@@ -8,6 +8,7 @@ import { commonConstants } from "../_constants";
 import { ToastContainer } from "react-toastify";
 import Banner from "../_utils/Banner";
 import DonutChart from "../_utils/DonutChart";
+import RadarChart from "../_utils/RadarChart";
 import DropdownMenus from "../_utils/DropdownMenus";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
@@ -73,7 +74,16 @@ class IndividualContributionPage extends React.Component {
               <Container>
                 <Tab.Container id="left-tabs-example">
                   <Row>
+
                     <Col>
+                      <RadarChart
+                        data={this.props.individualConfluenceData["All"].labels}
+                        dataLabel={"Edited Pages"}
+                        jiraData={this.props.individualJiraData}
+                      />
+                    </Col>
+
+                    {/* <Col>
                       <ButtonGroup
                         btnNames={this.state.btnNames}
                         clickHandler={this.handleBtnGroupClick}
@@ -83,9 +93,9 @@ class IndividualContributionPage extends React.Component {
                     <Col>
                       {this.state.btnSelected === commonConstants.CONFLUENCE &&
                         typeof this.props.individualConfluenceData !==
-                          "undefined" &&
+                        "undefined" &&
                         JSON.stringify(this.props.individualConfluenceData) !==
-                          "{}" && (
+                        "{}" && (
                           <DropdownMenus
                             data={
                               this.props.individualConfluenceData["All"].labels
@@ -96,9 +106,9 @@ class IndividualContributionPage extends React.Component {
                         )}
                       {this.state.btnSelected === commonConstants.GITHUB &&
                         typeof this.props.individualGithubData !==
-                          "undefined" &&
+                        "undefined" &&
                         JSON.stringify(this.props.individualGithubData) !==
-                          "{}" && (
+                        "{}" && (
                           <DropdownMenus
                             data={this.props.individualGithubData["All"].labels}
                             onChange={this.selectStudent}
@@ -109,7 +119,7 @@ class IndividualContributionPage extends React.Component {
                       {this.state.btnSelected === commonConstants.JIRA &&
                         typeof this.props.individualJiraData !== "undefined" &&
                         JSON.stringify(this.props.individualJiraData) !==
-                          "{}" && (
+                        "{}" && (
                           <DropdownMenus
                             data={this.props.individualJiraData["All"].labels}
                             onChange={this.selectStudent}
@@ -120,14 +130,14 @@ class IndividualContributionPage extends React.Component {
                     <Col>
                       {this.state.btnSelected === commonConstants.CONFLUENCE &&
                         typeof this.props.individualConfluenceData !==
-                          "undefined" &&
+                        "undefined" &&
                         JSON.stringify(this.props.individualConfluenceData) !==
-                          "{}" && (
-                          <DonutChart
+                        "{}" && (
+                          <RadarChart
                             data={JSON.parse(
                               JSON.stringify(
                                 this.props.individualConfluenceData[
-                                  this.state.selectedStudent
+                                this.state.selectedStudent
                                 ]
                               )
                             )}
@@ -136,14 +146,14 @@ class IndividualContributionPage extends React.Component {
                         )}
                       {this.state.btnSelected === commonConstants.GITHUB &&
                         typeof this.props.individualGithubData !==
-                          "undefined" &&
+                        "undefined" &&
                         JSON.stringify(this.props.individualGithubData) !==
-                          "{}" && (
+                        "{}" && (
                           <DonutChart
                             data={JSON.parse(
                               JSON.stringify(
                                 this.props.individualGithubData[
-                                  this.state.selectedStudent
+                                this.state.selectedStudent
                                 ]
                               )
                             )}
@@ -153,19 +163,19 @@ class IndividualContributionPage extends React.Component {
                       {this.state.btnSelected === commonConstants.JIRA &&
                         typeof this.props.individualJiraData !== "undefined" &&
                         JSON.stringify(this.props.individualJiraData) !==
-                          "{}" && (
+                        "{}" && (
                           <DonutChart
                             data={JSON.parse(
                               JSON.stringify(
                                 this.props.individualJiraData[
-                                  this.state.selectedStudent
+                                this.state.selectedStudent
                                 ]
                               )
                             )}
                             dataLabel={"Completed Tasks"}
                           />
                         )}
-                    </Col>
+                    </Col> */}
                   </Row>
                 </Tab.Container>
               </Container>

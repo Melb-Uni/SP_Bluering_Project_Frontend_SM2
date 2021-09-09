@@ -41,7 +41,8 @@ export default function RadarChart(props) {
             hidden: index !== 0,
             data: [getRandomInt(1, 100), getRandomInt(1, 100), getRandomInt(1, 100)],
             fill: true,
-            backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16),
+            // backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16),
+            backgroundColor: `rgba(${getRandomInt(1, 255)}, ${getRandomInt(1, 255)}, ${getRandomInt(1, 255)}, ${0.2})`,
             borderColor: "black",
             pointBackgroundColor: "black",
             pointBorderColor: '#fff',
@@ -59,7 +60,13 @@ export default function RadarChart(props) {
             <Radar
                 data={data}
                 options={{
-                    legend: { display: true, position: "right", labels: { fontSize: 12 } }
+                    legend: { display: true, position: "right", labels: { fontSize: 12 } },
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
                 }}
             />
         </div>

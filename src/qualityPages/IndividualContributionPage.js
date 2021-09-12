@@ -29,7 +29,9 @@ class IndividualContributionPage extends React.Component {
       hasConfig:
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
     };
-
+    if (this.state.hasConfig) {
+      this.props.getConfluenceIndividualData(this.props.currentTeamKey);
+    }
     this.selectStudent = this.selectStudent.bind(this);
     this.handleBtnGroupClick = this.handleBtnGroupClick.bind(this);
   }
@@ -37,6 +39,7 @@ class IndividualContributionPage extends React.Component {
   handleBtnGroupClick(e) {
     let picked = e.currentTarget.firstChild.innerHTML;
     if (picked === commonConstants.CONFLUENCE) {
+      console.log("getConfluenceIndividualData");
       this.props.getConfluenceIndividualData(this.props.currentTeamKey);
     } else if (picked === commonConstants.GITHUB) {
       this.props.getGithubIndividualData(this.props.currentTeamKey);
@@ -53,11 +56,11 @@ class IndividualContributionPage extends React.Component {
     this.setState({ selectedStudent: e.target.value });
   }
 
-  componentDidMount() {
-    if (this.state.hasConfig) {
-      this.props.getConfluenceIndividualData(this.props.currentTeamKey);
-    }
-  }
+  // componentDidMount() {
+  //   if (this.state.hasConfig) {
+  //     this.props.getConfluenceIndividualData(this.props.currentTeamKey);
+  //   }
+  // }
 
   render() {
     return (

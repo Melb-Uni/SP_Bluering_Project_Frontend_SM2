@@ -31,6 +31,8 @@ class IndividualContributionPage extends React.Component {
     };
     if (this.state.hasConfig) {
       this.props.getConfluenceIndividualData(this.props.currentTeamKey);
+      this.props.getGithubIndividualData(this.props.currentTeamKey);
+      this.props.getJiraIndividualData(this.props.currentTeamKey);
     }
     this.selectStudent = this.selectStudent.bind(this);
     this.handleBtnGroupClick = this.handleBtnGroupClick.bind(this);
@@ -80,7 +82,9 @@ class IndividualContributionPage extends React.Component {
 
                     <Col>
                       <RadarChart
-                        data={this.props.individualConfluenceData["All"].labels}
+                        data={this.props.individualConfluenceData ? this.props.individualConfluenceData["All"].labels : []}
+                        data2={this.props.individualGithubData}
+                        data3={this.props.individualConfluenceData}
                         dataLabel={"Edited Pages"}
                         jiraData={this.props.individualJiraData}
                       />

@@ -1,0 +1,15 @@
+.jira-graph {
+    margin-top: 1rem;
+}
+
+.jira-dropdown {
+    margin-left: 2rem;
+}
+
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl {
+    width: 85px;
+}
+
+svg.MuiSvgIcon-root.MuiSelect-icon {
+    padding-left: 55px;
+}

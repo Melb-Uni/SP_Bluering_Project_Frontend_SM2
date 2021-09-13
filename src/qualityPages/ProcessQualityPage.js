@@ -10,6 +10,12 @@ import { ToastContainer } from "react-toastify";
 import { Spin } from "antd";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import "./ProcessQualityPage.css";
+import { makeStyles } from '@material-ui/core/styles';
 
 class ProcessQualityPage extends React.Component {
   constructor(props) {
@@ -21,7 +27,13 @@ class ProcessQualityPage extends React.Component {
         commonConstants.GITHUB,
         commonConstants.JIRA,
       ],
-
+      sprint: "Sprint 0",
+      sprintCollection: [
+        "Sprint 0",
+        "Sprint 1",
+        "Sprint 2",
+      ],
+      open: false,
       btnSelected: commonConstants.CONFLUENCE,
       scrollPosition: 0,
       hasConfig:
@@ -30,6 +42,19 @@ class ProcessQualityPage extends React.Component {
 
     this.handleBtnGroupClick = this.handleBtnGroupClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+
+
+    // const useStyles = makeStyles((theme) => ({
+    //   button: {
+    //     display: 'block',
+    //     marginTop: theme.spacing(2),
+    //   },
+    //   formControl: {
+    //     margin: theme.spacing(1),
+    //     minWidth: 120,
+    //   },
+    // }));
+    // this.classes = useStyles();
   }
 
   handleBtnGroupClick(e) {
@@ -67,6 +92,22 @@ class ProcessQualityPage extends React.Component {
     window.scrollTo(0, parseInt(this.state.scrollPosition));
   }
 
+  setSprint(newValue) {
+    this.setState({
+      sprint: newValue
+    })
+  }
+
+  setOpen(choice) {
+    this.setState({
+      open: choice
+    })
+  }
+
+  handleChange = (event) => {
+    this.setSprint(event.target.value);
+  };
+
   render() {
     return (
       <div className="uomcontent">
@@ -101,7 +142,27 @@ class ProcessQualityPage extends React.Component {
                 )}
               {this.state.hasConfig &&
                 this.state.btnSelected == commonConstants.JIRA && (     //Generate Line Chart for Jira tickets
-                  <LineChart data={this.props.jiraData} />
+                  <div>
+                    <div className="jira-dropdown">
+                    <FormControl>
+                      <InputLabel id="demo-controlled-open-select-label">Sprint</InputLabel>
+                      <Select
+                        labelId="demo-controlled-open-select-label"
+                        id="demo-controlled-open-select"
+                        open={this.state.open}
+                        onClose={() => this.setOpen(false)}
+                        onOpen={() => this.setOpen(true)}
+                        value={this.state.sprint}
+                        onChange={this.handleChange}
+                      >
+                        {this.state.sprintCollection.map(el => <MenuItem value={el}>{el}</MenuItem>)}
+                      </Select>
+                    </FormControl>
+                    </div>
+                    <div className="jira-graph">
+                      <LineChart data={this.props.jiraData} />
+                    </div>
+                  </div>
                 )}
             </Spin>
           </div>

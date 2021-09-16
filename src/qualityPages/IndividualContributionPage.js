@@ -12,6 +12,10 @@ import RadarChart from "../_utils/RadarChart";
 import DropdownMenus from "../_utils/DropdownMenus";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
+import { userService } from "../_services";
+import { formatDonutChartData } from "../_utils/formatDonutChartData.js";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 class IndividualContributionPage extends React.Component {
   constructor(props) {
@@ -28,14 +32,30 @@ class IndividualContributionPage extends React.Component {
       studentList: [],
       hasConfig:
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
+      loader: true,
+      confluenceData: null,
+      githubData: null,
+      jiraData: null
     };
-    if (this.state.hasConfig) {
-      this.props.getConfluenceIndividualData(this.props.currentTeamKey);
-      this.props.getGithubIndividualData(this.props.currentTeamKey);
-      this.props.getJiraIndividualData(this.props.currentTeamKey);
-    }
+
     this.selectStudent = this.selectStudent.bind(this);
     this.handleBtnGroupClick = this.handleBtnGroupClick.bind(this);
+  }
+
+  async componentDidMount() {
+    if (this.state.hasConfig) {
+      const [confluenceData, gitHubData, jiraData] = await Promise.all([
+        userService.getConfluenceIndividualData(this.props.currentTeamKey),
+        userService.getGithubIndividualData(this.props.currentTeamKey),
+        userService.getJiraIndividualData(this.props.currentTeamKey)
+      ]);
+      this.setState({
+        confluenceData: formatDonutChartData(confluenceData),
+        githubData: gitHubData.data,
+        jiraData: formatDonutChartData(jiraData),
+        loader: false
+      });
+    }
   }
 
   handleBtnGroupClick(e) {
@@ -58,12 +78,6 @@ class IndividualContributionPage extends React.Component {
     this.setState({ selectedStudent: e.target.value });
   }
 
-  // componentDidMount() {
-  //   if (this.state.hasConfig) {
-  //     this.props.getConfluenceIndividualData(this.props.currentTeamKey);
-  //   }
-  // }
-
   render() {
     return (
       <div className="uomcontent">
@@ -78,111 +92,23 @@ class IndividualContributionPage extends React.Component {
             {this.state.hasConfig && (
               <Container>
                 <Tab.Container id="left-tabs-example">
+
                   <Row>
 
-                    <Col>
-                      <RadarChart
-                        data={this.props.individualConfluenceData ? this.props.individualConfluenceData["All"].labels : []}
-                        data2={this.props.individualGithubData}
-                        data3={this.props.individualConfluenceData}
-                        dataLabel={"Edited Pages"}
-                        jiraData={this.props.individualJiraData}
-                      />
+                    <Col style={{ textAlign: "center" }}>
+                      {this.state.loader ?
+                        <CircularProgress size={100} />
+                        :
+                        <RadarChart
+                          data={this.state.confluenceData ? this.state.confluenceData["All"].labels : []}
+                          data2={this.state.githubData}
+                          data3={this.state.confluenceData}
+                          dataLabel={"Edited Pages"}
+                          jiraData={this.state.jiraData}
+                        />
+                      }
                     </Col>
 
-                    {/* <Col>
-                      <ButtonGroup
-                        btnNames={this.state.btnNames}
-                        clickHandler={this.handleBtnGroupClick}
-                        selected={this.state.btnSelected}
-                      />
-                    </Col>
-                    <Col>
-                      {this.state.btnSelected === commonConstants.CONFLUENCE &&
-                        typeof this.props.individualConfluenceData !==
-                        "undefined" &&
-                        JSON.stringify(this.props.individualConfluenceData) !==
-                        "{}" && (
-                          <DropdownMenus
-                            data={
-                              this.props.individualConfluenceData["All"].labels
-                            }
-                            onChange={this.selectStudent}
-                            value={this.state.selectedStudent}
-                          />
-                        )}
-                      {this.state.btnSelected === commonConstants.GITHUB &&
-                        typeof this.props.individualGithubData !==
-                        "undefined" &&
-                        JSON.stringify(this.props.individualGithubData) !==
-                        "{}" && (
-                          <DropdownMenus
-                            data={this.props.individualGithubData["All"].labels}
-                            onChange={this.selectStudent}
-                            value={this.state.selectedStudent}
-                          />
-                        )}
-
-                      {this.state.btnSelected === commonConstants.JIRA &&
-                        typeof this.props.individualJiraData !== "undefined" &&
-                        JSON.stringify(this.props.individualJiraData) !==
-                        "{}" && (
-                          <DropdownMenus
-                            data={this.props.individualJiraData["All"].labels}
-                            onChange={this.selectStudent}
-                            value={this.state.selectedStudent}
-                          />
-                        )}
-                    </Col>
-                    <Col>
-                      {this.state.btnSelected === commonConstants.CONFLUENCE &&
-                        typeof this.props.individualConfluenceData !==
-                        "undefined" &&
-                        JSON.stringify(this.props.individualConfluenceData) !==
-                        "{}" && (
-                          <RadarChart
-                            data={JSON.parse(
-                              JSON.stringify(
-                                this.props.individualConfluenceData[
-                                this.state.selectedStudent
-                                ]
-                              )
-                            )}
-                            dataLabel={"Edited Pages"}
-                          />
-                        )}
-                      {this.state.btnSelected === commonConstants.GITHUB &&
-                        typeof this.props.individualGithubData !==
-                        "undefined" &&
-                        JSON.stringify(this.props.individualGithubData) !==
-                        "{}" && (
-                          <DonutChart
-                            data={JSON.parse(
-                              JSON.stringify(
-                                this.props.individualGithubData[
-                                this.state.selectedStudent
-                                ]
-                              )
-                            )}
-                            dataLabel={"Number of Commits"}
-                          />
-                        )}
-                      {this.state.btnSelected === commonConstants.JIRA &&
-                        typeof this.props.individualJiraData !== "undefined" &&
-                        JSON.stringify(this.props.individualJiraData) !==
-                        "{}" && (
-                          <DonutChart
-                            data={JSON.parse(
-                              JSON.stringify(
-                                this.props.individualJiraData[
-                                this.state.selectedStudent
-                                ]
-                              )
-                            )}
-                            dataLabel={"Completed Tasks"}
-                          />
-                        )}
-                    </Col> */}
                   </Row>
                 </Tab.Container>
               </Container>

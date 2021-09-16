@@ -33,11 +33,26 @@ export default function RadarChart(props) {
     function getRandomInt(min, max) {
         return (Math.floor(Math.random() * (max - min)) + min);
     }
-    console.log("jiraData", props.jiraData);
+    console.log("props data", props);
+
+    let totalGitCommits = 0
+    for (const [key, value] of Object.entries(props.data2)) {
+        totalGitCommits += value
+    }
+
+    function getStudentCount(student) {
+        for (const [key, value] of Object.entries(props.data2)) {
+            if (student.includes(key.split(" ")[0])) {
+                console.log("github percent", (value / totalGitCommits) * 100)
+                return (value / totalGitCommits) * 100
+            }
+        }
+    }
+
 
     props.data.forEach((student, index) => {
         const confluencePercent = (props.data3[student].datasets[0].data[0] / props.data3[student].datasets[0].data[1]) * 100
-        const gitHubPercent = getRandomInt(1, 100) // Random value generated for testing purpose
+        const gitHubPercent = getStudentCount(student) // Random value generated for testing purpose
         const jiraPercent = getRandomInt(1, 100) // Random value generated for testing purpose
         datasets.push({
             label: student,

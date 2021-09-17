@@ -78,7 +78,6 @@ class IndividualContributionPage extends React.Component {
     this.setState({ selectedStudent: e.target.value });
   }
 
-
   render() {
     return (
       <div className="uomcontent">

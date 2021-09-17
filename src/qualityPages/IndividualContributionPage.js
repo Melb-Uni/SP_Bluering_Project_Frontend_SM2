@@ -44,10 +44,11 @@ class IndividualContributionPage extends React.Component {
 
   async componentDidMount() {
     if (this.state.hasConfig) {
+      let jira_proj = (this.props.teamInfo[this.props.currentTeamKey].jiraUrl.split('/'))[4];
       const [confluenceData, gitHubData, jiraData] = await Promise.all([
         userService.getConfluenceIndividualData(this.props.currentTeamKey),
         userService.getGithubIndividualData(this.props.currentTeamKey),
-        userService.getJiraIndividualData(this.props.currentTeamKey)
+        userService.getJiraIndividualData(jira_proj)
       ]);
       this.setState({
         confluenceData: formatDonutChartData(confluenceData),

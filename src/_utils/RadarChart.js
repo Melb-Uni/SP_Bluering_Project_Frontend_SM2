@@ -43,10 +43,14 @@ export default function RadarChart(props) {
     function getStudentCount(student) {
         for (const [key, value] of Object.entries(props.data2)) {
             if (student.includes(key.split(" ")[0])) {
-                console.log("github percent", (value / totalGitCommits) * 100)
                 return (value / totalGitCommits) * 100
             }
         }
+    }
+
+    console.log("Jira Contribution Percent")
+    for (const [key, value] of Object.entries(props.jiraData)) {
+        console.log(key, (value.datasets[0].data[0] / value.datasets[0].data[1]) * 100);
     }
 
 

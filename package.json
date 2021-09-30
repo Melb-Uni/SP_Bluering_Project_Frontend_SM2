@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "./",
   "private": true,
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "http://127.0.0.1:8000/",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.4",
@@ -37,9 +37,9 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --no-cache",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

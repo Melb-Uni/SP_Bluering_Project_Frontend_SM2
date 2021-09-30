@@ -31,26 +31,26 @@ class ProjectSettingsPage extends React.Component {
     this.state = {
       jiraWebsite:
         this.props.teamInfo &&
-        this.props.teamInfo[this.props.currentTeamKey] &&
-        this.props.teamInfo[this.props.currentTeamKey].jiraUrl
+          this.props.teamInfo[this.props.currentTeamKey] &&
+          this.props.teamInfo[this.props.currentTeamKey].jiraUrl
           ? this.props.teamInfo[this.props.currentTeamKey].jiraUrl
           : "",
       githubWebsite:
         this.props.teamInfo &&
-        this.props.teamInfo[this.props.currentTeamKey] &&
-        this.props.teamInfo[this.props.currentTeamKey].githubUrl
+          this.props.teamInfo[this.props.currentTeamKey] &&
+          this.props.teamInfo[this.props.currentTeamKey].githubUrl
           ? this.props.teamInfo[this.props.currentTeamKey].githubUrl
           : "",
       githubUsername:
         this.props.teamInfo &&
-        this.props.teamInfo[this.props.currentTeamKey] &&
-        this.props.teamInfo[this.props.currentTeamKey].githubUsername
+          this.props.teamInfo[this.props.currentTeamKey] &&
+          this.props.teamInfo[this.props.currentTeamKey].githubUsername
           ? this.props.teamInfo[this.props.currentTeamKey].githubUsername
           : "",
       githubPassword:
         this.props.teamInfo &&
-        this.props.teamInfo[this.props.currentTeamKey] &&
-        this.props.teamInfo[this.props.currentTeamKey].githubPassword
+          this.props.teamInfo[this.props.currentTeamKey] &&
+          this.props.teamInfo[this.props.currentTeamKey].githubPassword
           ? this.props.teamInfo[this.props.currentTeamKey].githubPassword
           : "",
     };
@@ -89,29 +89,29 @@ class ProjectSettingsPage extends React.Component {
             this.setState({
               jiraWebsite:
                 this.props.teamInfo &&
-                this.props.teamInfo[this.props.currentTeamKey] &&
-                this.props.teamInfo[this.props.currentTeamKey].jiraUrl
+                  this.props.teamInfo[this.props.currentTeamKey] &&
+                  this.props.teamInfo[this.props.currentTeamKey].jiraUrl
                   ? this.props.teamInfo[this.props.currentTeamKey].jiraUrl
                   : "",
               githubWebsite:
                 this.props.teamInfo &&
-                this.props.teamInfo[this.props.currentTeamKey] &&
-                this.props.teamInfo[this.props.currentTeamKey].githubUrl
+                  this.props.teamInfo[this.props.currentTeamKey] &&
+                  this.props.teamInfo[this.props.currentTeamKey].githubUrl
                   ? this.props.teamInfo[this.props.currentTeamKey].githubUrl
                   : "",
               githubUsername:
                 this.props.teamInfo &&
-                this.props.teamInfo[this.props.currentTeamKey] &&
-                this.props.teamInfo[this.props.currentTeamKey].githubUsername
+                  this.props.teamInfo[this.props.currentTeamKey] &&
+                  this.props.teamInfo[this.props.currentTeamKey].githubUsername
                   ? this.props.teamInfo[this.props.currentTeamKey]
-                      .githubUsername
+                    .githubUsername
                   : "",
               githubPassword:
                 this.props.teamInfo &&
-                this.props.teamInfo[this.props.currentTeamKey] &&
-                this.props.teamInfo[this.props.currentTeamKey].githubPassword
+                  this.props.teamInfo[this.props.currentTeamKey] &&
+                  this.props.teamInfo[this.props.currentTeamKey].githubPassword
                   ? this.props.teamInfo[this.props.currentTeamKey]
-                      .githubPassword
+                    .githubPassword
                   : "",
             });
           }
@@ -174,7 +174,7 @@ class ProjectSettingsPage extends React.Component {
                   <br />
 
                   <label style={label}>
-                    Git Password:
+                    Git Personal Access Token:
                     <Input.Password
                       style={input}
                       value={this.state.githubPassword}

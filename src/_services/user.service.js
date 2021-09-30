@@ -124,8 +124,23 @@ function getTeamCodeMetrics(teamKey) {
     });
 }
 
+// function getGithubIndividualData(teamKey) {
+//   let url = baseUrl + "/git/individual_commits/" + teamKey;
+
+//   const requestOptions = {
+//     method: "GET",
+//     credentials: "include",
+//   };
+
+//   return fetch(url, requestOptions)
+//     .then((response) => response.json())
+//     .then((jsonResponse) => {
+//       return jsonResponse;
+//     });
+// }
+
 function getGithubIndividualData(teamKey) {
-  let url = baseUrl + "/git/individual_commits/" + teamKey;
+  let url = baseUrl + "/git/contribution/" + teamKey;
 
   const requestOptions = {
     method: "GET",

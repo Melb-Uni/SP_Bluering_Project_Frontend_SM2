@@ -7,17 +7,37 @@ import Table from "../_utils/Table";
 import { alertConstants } from "../_constants";
 import { InformationalNote } from "../_utils/Alert";
 
+import PropTypes from "prop-types";
+import Box from "@mui/material/Box";
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { StyledEngineProvider } from "@mui/material/styles";
+
+
 
 class CommunicationPage extends React.Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
       columns: [
         {
           name: "Meeting Name",
           selector: "title",
         },
-
+        {
+          name: "Sprint",
+          selector: "sprint",
+        },
         {
           name: "Meeting Minutes",
           selector: "link",
@@ -28,7 +48,7 @@ class CommunicationPage extends React.Component {
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
     };
   }
-
+ 
   componentDidMount() {
     if (this.state.hasConfig) {
       this.props.getTeamConfluenceMeeting(this.props.currentTeamKey);
@@ -42,6 +62,8 @@ class CommunicationPage extends React.Component {
 
         <div role="main">
           <div className="page-inner">
+
+
             <Banner projName={this.props.currentTeamName} />
             {!this.state.hasConfig && (
               <InformationalNote message={alertConstants.NO_CONFIG} />
@@ -50,18 +72,17 @@ class CommunicationPage extends React.Component {
               (!this.props.confluenceData ||
                 this.props.confluenceData.length == 0) && (
                 <InformationalNote
-                  message={alertConstants.NO_MEETING_MINUTES}
-                />
+                  message={alertConstants.NO_MEETING_MINUTES} />
               )}
             {this.state.hasConfig &&
               this.props.confluenceData &&
               this.props.confluenceData.length != 0 && (
-                <Table
-                  columns={this.state.columns}
-                  data={this.props.confluenceData}
-                  width={"80vw"}
-                  height={"50vh"}
-                />
+                this.props.confluenceData[3] &&
+                <Table aria-label="collapsible table"
+                columns={this.state.columns}
+                data={this.props.confluenceData}
+                width={"80vw"}
+                height={"50vh"} />
               )}
           </div>
         </div>

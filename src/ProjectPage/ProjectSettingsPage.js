@@ -9,6 +9,12 @@ import { Input } from "antd";
 import { alertConstants } from "../_constants";
 import { InformationalNote } from "../_utils/Alert";
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import Button from '@mui/material/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
+import IconButton from '@mui/material/IconButton';
+
+
 
 const input = {
   width: "642px",
@@ -174,7 +180,18 @@ class ProjectSettingsPage extends React.Component {
                   <br />
 
                   <label style={label}>
-                    Git Password:
+
+                    Git Token:
+                    <Tooltip title="1.Go to developer settings in Settings options of GitHub repo 2.Generate Personal Access token" >
+                    <IconButton aria-label="info">
+                     <InfoIcon />
+                     </IconButton>
+                     
+                    
+                    </Tooltip>
+                    
+            
+                    
                     <Input.Password
                       style={input}
                       value={this.state.githubPassword}
@@ -214,3 +231,4 @@ const actionCreators = {
 
 const settingPage = connect(mapState, actionCreators)(ProjectSettingsPage);
 export { settingPage as ProjectSettingsPage };
+

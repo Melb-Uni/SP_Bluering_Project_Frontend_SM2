@@ -78,11 +78,12 @@ class CommunicationPage extends React.Component {
               this.props.confluenceData &&
               this.props.confluenceData.length != 0 && (
                 this.props.confluenceData[3] &&
-                <Table aria-label="collapsible table"
+                <Table
                 columns={this.state.columns}
                 data={this.props.confluenceData}
                 width={"80vw"}
-                height={"50vh"} />
+                height={"50vh"} 
+                />
               )}
           </div>
         </div>

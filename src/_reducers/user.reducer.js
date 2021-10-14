@@ -16,7 +16,7 @@ const initState = {
   currentTeamName: "",
   isLogin: false,
   requestLogin: false,
-  teamInfo:{},
+  teamInfo: {},
 };
 
 export function user(state = initState, action) {
@@ -96,6 +96,23 @@ export function user(state = initState, action) {
       return {
         ...state,
         requestTeamGithubCommits: true,
+      };
+    case userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_REQUEST:
+      return {
+        ...state,
+        requestTeamGithubCommits: true
+      }
+    case userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_SUCCESS:
+      return {
+        ...state,
+        teamGithubCommits: action.payload,
+        requestTeamGithubCommits: false
+      }
+    case userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_FAILURE:
+      return {
+        ...state,
+        requestTeamGithubCommits: false,
+        teamGithubCommits: {},
       };
     case userConstants.GET_TEAM_GITHUB_COMMITS_SUCCESS:
       return {

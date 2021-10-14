@@ -2,6 +2,7 @@ import { userConstants } from "../_constants";
 import { userService } from "../_services";
 import { history } from "../_helpers";
 import { formatLineChartData } from "../_utils/formatLineChartData.js";
+import { formatWeeklyCommit } from "../_utils/formatWeeklyCommit.js";
 import { formatDonutChartData } from "../_utils/formatDonutChartData.js";
 import { unixToDate } from "../_utils/unixToDate.js";
 import { failureToast } from "../_utils/toast";
@@ -26,6 +27,7 @@ export const userActions = {
   setCurrentTeamKey,
   setCurrentTeamName,
   getTeamMemberList,
+  getWeeklyCommits
 };
 
 function request(action, payload) {
@@ -111,6 +113,41 @@ function getTeamGithubCommits(teamKey) {
         dispatch(
           failure(
             userConstants.GET_TEAM_GITHUB_COMMITS_FAILURE,
+            error.toString()
+          )
+        );
+        failureToast(error.toString());
+      }
+    );
+  };
+}
+
+function getWeeklyCommits(teamKey) {
+  return (dispatch) => {
+    dispatch(request(userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_REQUEST));
+    userService.getWeeklyCommits(teamKey).then(
+      (response) => {
+        if (checkRespCode(response)) {
+          dispatch(
+            success(
+              userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_SUCCESS,
+              formatWeeklyCommit(response)
+            )
+          );
+        } else {
+          dispatch(
+            failure(
+              userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_FAILURE,
+              response.message
+            )
+          );
+          failureToast(response.message);
+        }
+      },
+      (error) => {
+        dispatch(
+          failure(
+            userConstants.GET_TEAM_GITHUB_WEEKLY_COMMITS_FAILURE,
             error.toString()
           )
         );

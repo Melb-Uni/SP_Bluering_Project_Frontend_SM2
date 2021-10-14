@@ -66,13 +66,13 @@ Place both the files in TeamSPBackend/Settings folder.
 7. Start server python manage.py runserver,  the back-end is now running on http://127.0.0.1:8000/  
 
 ### 3. Sample configuration:
-Jira URL : https://jira.cis.unimelb.edu.au:8444/projects/DA9001319/summary
-GitHub URL : https://github.com/Melb-Uni/SP_Bluering_Project_Frontend_SM2
-Give GitHub username
-For GitHub token generation:
-1. Navigate to your Git account settings, then Developer Settings. Click the Personal access tokens menu, then click Generate new token.
-2. Select repo and user as the scope. The token will be applicable for all the specified actions in your repositories.
-3. Click Generate Token.
+1. Jira URL : https://jira.cis.unimelb.edu.au:8444/projects/DA9001319/summary
+2. GitHub URL : https://github.com/Melb-Uni/SP_Bluering_Project_Frontend_SM2
+3. Give GitHub username
+4. For GitHub token generation:
+      1. Navigate to your Git account settings, then Developer Settings. Click the Personal access tokens menu, then click Generate new token.
+      2. Select repo and user as the scope. The token will be applicable for all the specified actions in your repositories.
+      3. Click Generate Token.
 
 ## Available Scripts
 

@@ -25,9 +25,11 @@ import { Radar } from 'react-chartjs-2'
 
 export default function RadarChart(props) {
     const labels = [
-        'GitHub',
+        'GitHub by Commits',
+        'GitHub by Code Modifications(Head)',
         'Confluence',
-        'Jira'
+        'Jira',
+
     ];
     let datasets = [];
     function getRandomInt(min, max) {
@@ -57,11 +59,12 @@ export default function RadarChart(props) {
     props.data.forEach((student, index) => {
         const confluencePercent = (props.data3[student].datasets[0].data[0] / props.data3[student].datasets[0].data[1]) * 100
         const gitHubPercent = getStudentCount(student) // Random value generated for testing purpose
-        const jiraPercent = getRandomInt(1, 100) // Random value generated for testing purpose
+        const jiraPercent = getRandomInt(1, 50) // Random value generated for testing purpose
+        const gitHubPercent2 = getRandomInt(1, 50) // Random value generated for testing purpose
         datasets.push({
             label: student,
             hidden: index !== 0,
-            data: [gitHubPercent, confluencePercent, jiraPercent],
+            data: [gitHubPercent, gitHubPercent2, confluencePercent, jiraPercent],
             fill: true,
             // backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16),
             backgroundColor: `rgba(${getRandomInt(1, 255)}, ${getRandomInt(1, 255)}, ${getRandomInt(1, 255)}, ${0.2})`,

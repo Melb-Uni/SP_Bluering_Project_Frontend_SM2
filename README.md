@@ -290,64 +290,32 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Commu
 
 <h1 id="6.0"> 6.0 Change Log </h1> 
 
+### 25/08/2021
+*     Initial commit
 
-## Version 1: (2021.April.02)
-### 2021.3.27  
-•	Initial GitHub Project created  
-•	Digital Prototype 1.0 Completed  
-•	Digital Prototype 2.0 Completed according to Client’s feedback  
-### 2021.4.02  
-•	Created Data Sample: JSON format in an API level for each API  
+### 30/08/2021
+*     Updated robots.txt
 
+### 03/09/2021
+*     Added .gitignore
 
-## Version 2: (2021.April.30)
-### 2021.4.22  
-•	Created configure page  
-### 2021.4.24  
-•	Communication page UI was finished   
-•	Updated UI and added showing history function for configure page  
-### 2021.4.26  
-•	Finished project overview page  
-### 2021.4.27  
-•	Changed layout for Individual Page  
-•	Coordinator homepage completed a part of API connections with backend   
-•	Communication quality page can interact with backend locally  
-### 2021.4.28  
-•	Coordinator Homepage UI updated  
-•	Product quality completed API connections  
-•	Updated Coordinator Homepage UI  
-### 2021.4.29  
-•	Updated API code for Individual Contribution Page  
-•	Coordinator Home page removed box shadow  
-### 2021.4.30  
-•	Modified project homepage  
-•	Coordinator homepage local API deployment  
-•	Project homepage API code completed  
+### 09/09/2021
+*     Modified Individual Contribution graph
 
+### 10/09/2021
+*     Setting chart max range
 
-## Version 3: (2021.May.31)
+### 12/09/2021
+*     Fixed confluence data bug
+*     GitHub percentage calculation
+*     Jira percentage calculation
 
-### 2021.5.01  
-•	Bug fix communication quality page  
-### 2021.5.05  
-•	Product quality API unify testing with backend  
+### 16/09/2021
+*     Added GitHub individual contributions
 
-### 2021.5.06  
-•	Bugfix communication quality page  
-### 2021.5.07  
-•	Bugfix communication quality page  
-•	Added saving git username and password function  
-•	Changed the context of the column of meeting minutes to clickable URLs  
-### 2021.5.08  
-•	Completed Sprint 2 communication quality page  
-### 2021.5.13  
-•	Coordinator Homepage UI added a drawer for showing student information  
-•	Updated API for Configure page  
-### 2021.5.28
-•	Added input check   
-•	Added a no_meeting_minutes alert message  
-•	Updated data sample  
+### 17/09/2021
+*     Integrated Jira Individual contributions
 
-## Version 1: (25/08/2021)
-•	Initial commit
+### 30/09/2021
+*     Configuration UI change (Added tool tip)
 

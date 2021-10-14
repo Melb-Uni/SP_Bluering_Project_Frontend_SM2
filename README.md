@@ -59,10 +59,20 @@ The steps for installing and deploying Software Project easily is as follows:
 1. Install Python3.7 and MySQL  
 2. Install all packages needed pip install -r requirements.txt (Do not install another version of packages which can help you miss many unwanted mistakes) If multiple version of python are installed, use python3 and pip3 or python3.x and pip3.x instead.  
 3. Start MySQL server on localhost:3306, and create a database named "sp90013", i.e., run "CREATE DATABASE sp90013;"  
-4. Modify the MySQL username and password config in TeamSPBackend/settings/dev.py and TeamSPBackend/settings/prod.py (don't forget to modify 'DATABASES/default/TEST/PASSWORD' in prod.py)  
-5. Create MySQL tables python manage.py migrate. If the database changes, use command python manage.py makemigrations to update metadata of database, then python manage.py migrate to update database structure.  
-6. Start server python manage.py runserver,  the back-end is now running on http://127.0.0.1:8000/  
+4. Access the google drive link and download prod.py and dev.py (https://drive.google.com/drive/folders/1AvH8nSIdgpFkoqMevrh13s944urW1Nqt?usp=sharing)
+Place both the files in TeamSPBackend/Settings folder.
+5. Modify the MySQL username and password config in TeamSPBackend/settings/dev.py and TeamSPBackend/settings/prod.py (don't forget to modify 'DATABASES/default/TEST/PASSWORD' in prod.py)  
+6. Create MySQL tables python manage.py migrate. If the database changes, use command python manage.py makemigrations to update metadata of database, then python manage.py migrate to update database structure.  
+7. Start server python manage.py runserver,  the back-end is now running on http://127.0.0.1:8000/  
 
+### 3. Sample configuration:
+Jira URL : https://jira.cis.unimelb.edu.au:8444/projects/DA9001319/summary
+GitHub URL : https://github.com/Melb-Uni/SP_Bluering_Project_Frontend_SM2
+Give GitHub username
+For GitHub token generation:
+1. Navigate to your Git account settings, then Developer Settings. Click the Personal access tokens menu, then click Generate new token.
+2. Select repo and user as the scope. The token will be applicable for all the specified actions in your repositories.
+3. Click Generate Token.
 
 ## Available Scripts
 

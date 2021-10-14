@@ -18,13 +18,9 @@ This project aims to have a software system that automatically gathers and summa
 
   * [3.2 API Documentation](#3.2)
 
-  * [3.3 Digital Prototype](#3.3)
-
 [4.0 Contributing / Extending](#4.0)
 
-  * [4.1 APIs](#4.1)
-
-  * [4.2 Web Application](#4.2)
+  * [4.1 Web Application](#4.1)
  
 [5.0 Architecture Diagrams](#5.0)
 
@@ -116,7 +112,6 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.0+Data
 
 
  <h1 id="3.2">3.2 API Documentation </h1>
-<h2> Sprint 0</h2>
 
 ### Subject:
 
@@ -143,48 +138,11 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.5+Jira
 https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.6+Git
 
 
-## Sprint 1: 
-
-### Acceptance Test
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.1+Acceptance+Test
-
-### Confluence API Designer
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.2+Confluence+API+Design
-
-### Database Design
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.3+Database+Design
-
-### Data Sample
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.4+Data+Sample
-
-### Mock API Constructor
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.5+Mock+API+Construction+Instructions
-
-### Workload Separation
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.6+Workload+Separation
-
-## Sprint 2:
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.3+Sprint+2%3A+API
-
-<h1 id="3.3"> 3.3 Digital Prototype </h1>
-
-Digital Prototype Package is able to download via below link:
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/4+Prototypes
-
-
 ## 1. Coordinator Homepage:
 
 In coordinator homepage: Shows the list of team members and their corresponding projects.
 A coordinator can Viewing Project, Importing Project and Viewing Specific Imported Project.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-1.Coordinatorhomepage 
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype 
 
 ### 1.1 Viewing Projects
 
@@ -206,56 +164,42 @@ As a coordinator, click on the specific project name to access the details about
 In process quality page includes statistical and/or graphical summaries on sprint velocity and burndown, documentation on Confluence, code review frequency and coverage and code commits. 
 For software engineering tools include GitHub, JIRA and Confluence.
 Here is the link to the UI of the process quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-3.Processquality
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 3. Viewing Team's Product Quality
-In product quality page includes statistical and/or graphical summaries by code analysed tool (TBC) on: Code quality, Test code quality. For Software Engineering tools include Git (Team's choice of GitHub, GitLab or Bitbucket).
-Here is the link to the UI of the product quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-4.Productquality 
+In product quality page includes statistical and/or graphical summaries by code analysed tool (TBC) on: Code quality, Test code quality. For Software Engineering tools include Git (GitHub).
+Here is the link to the UI of the product quality page.
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 4. Viewing Team's Communication Quality
 
 In communication quality page includes statistical and/or graphical summaries on comments from engineering tools which are GitHub, Confluence.
 Here is the link to the UI of the current communication quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-5.Communicationquality
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 5. Viewing Team Individuals' Contribution
 
 In individuals' contribution page includes statistical and/or graphical summaries of every team member's activities which are: task completion on JIRA, Code reviews on Git and Documentation contribution on Confluence.
 For software engineering tools include Git (Team's choice of GitHub, GitLab or BitBucket), JIRA, and Confluence.
 Here is the link to the UI of the current individuals' contribution page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-6.Individualcontributionpage
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 6. Team Configuration Page 
 
 As a coordinator, you may update the team configuration by clicking on the 'Configuration' button on the sidebar. Here the URLs for each of the team's tools should be set (currently not implemented). The account names/ emails for each team member's Slack and github accounts must be set in order to access their individual details in the 'Individual Contribution' section.
 Here is the link to the UI of the current configuration page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-7.Configuration
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 7. Login Page
 
 On the Login page, you can log in to the SP project by entering your email address and password. 
 Here is the link to the UI of the current login page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team+S2#DesignupdateFrontendteamS2-8.Loginpage
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 
 <h1 id="4.0"> 4.0 Contributing / Extending </h1>
 
-<h1 id="4.1"> 4.1 APIs </h1>
-
-### API versions
-
-Sprint 0 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1+Sprint+0%3A+API
-
-Sprint 1 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2+Sprint+1%3A+API
-
-Sprint 2 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.3+Sprint+2%3A+API
-
-
-<h1 id="4.2"> 4.2 Web Application </h1>
+<h1 id="4.1"> 4.1 Web Application </h1>
 
 ## Calling APIs
 
@@ -330,19 +274,19 @@ This page is the entry page to an SP project that requires user identificat
 
 ### Use Case Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.1+Use+Case+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.1.+Use+Case+Diagram
 
 ### Domain Model
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.2+Domain+Model
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.2.+Domain+Model
 
 ### Process Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.3+Process+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.3.+Process+Diagram
 
 ### Communication Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.4+Communication+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Communication+Diagram
 
 <h1 id="6.0"> 6.0 Change Log </h1> 
 
@@ -403,3 +347,7 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.4+Commun
 •	Added input check   
 •	Added a no_meeting_minutes alert message  
 •	Updated data sample  
+
+## Version 1: (25/08/2021)
+•	Initial commit
+

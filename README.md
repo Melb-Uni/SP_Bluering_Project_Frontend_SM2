@@ -301,31 +301,42 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Commu
 <h1 id="6.0"> 6.0 Change Log </h1> 
 
 ### 25/08/2021
-*     Initial commit
+* Initial commit
 
 ### 30/08/2021
-*     Updated robots.txt
+* Updated robots.txt
 
 ### 03/09/2021
-*     Added .gitignore
+* Added .gitignore
+
+### 08/09/2021
+* Updated settings
 
 ### 09/09/2021
-*     Modified Individual Contribution graph
+* Modified Individual Contribution graph
 
 ### 10/09/2021
-*     Setting chart max range
+* Setting chart max range
+* Remove .pem file
 
 ### 12/09/2021
-*     Fixed confluence data bug
-*     GitHub percentage calculation
-*     Jira percentage calculation
+* Fixed confluence data bug
+* GitHub percentage calculation
+* Jira percentage calculation
 
 ### 16/09/2021
-*     Added GitHub individual contributions
+* Added GitHub individual contributions- Frontend
+* Added Added GitHub individual contributions- Backend
 
 ### 17/09/2021
-*     Integrated Jira Individual contributions
+* Integrated Jira Individual contributions
+* Fixing Jira url bug
 
 ### 30/09/2021
-*     Configuration UI change (Added tool tip)
+* Configuration UI change (Added tool tip)
+
+### 07/10/2021
+* Added Sprint to Communications page
+* Modified meeting_ minutes table
+* Updated Migrations
 

@@ -15,6 +15,7 @@ export const userService = {
   deleteImportedProject,
   getConfluenceSpaceByKeyWord,
   getTeamMemberList,
+  getProjectStructure
 };
 
 const baseUrl = "/api/v1";
@@ -51,6 +52,20 @@ function getTeamGithubCommits(teamKey) {
 
 function getWeeklyCommits(teamKey) {
   let url = baseUrl + "/git/commits_over_time/" + teamKey;
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      return jsonResponse;
+    });
+}
+
+function getProjectStructure(teamKey) {
+  let url = baseUrl + "/git/get_proj_structure/" + teamKey;
   const requestOptions = {
     method: "GET",
     credentials: "include",

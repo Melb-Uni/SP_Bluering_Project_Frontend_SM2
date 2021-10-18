@@ -7,6 +7,11 @@ import { userActions } from "../_actions";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
 import ReverseTable from "../_utils/ReverseTable";
+import { userService } from "../_services";
+import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 class ProductQualityPage extends React.Component {
   constructor(props) {
@@ -38,13 +43,18 @@ class ProductQualityPage extends React.Component {
       ],
       hasConfig:
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
+      projStructure: {}
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.state.hasConfig) {
       // Gets data for product quality graph
-      this.props.getTeamCodeMetrics(this.props.currentTeamKey);
+      // this.props.getTeamCodeMetrics(this.props.currentTeamKey);
+      const projStructure = await userService.getProjectStructure(this.props.currentTeamKey);
+      this.setState({
+        projStructure: projStructure
+      })
     }
   }
 
@@ -106,6 +116,15 @@ class ProductQualityPage extends React.Component {
         },
       },
     };
+
+    const renderTree = (nodes) => (
+      <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+        {Array.isArray(nodes.children)
+          ? nodes.children.map((node) => renderTree(node))
+          : null}
+      </TreeItem>
+    );
+
     return (
       <div className="uomcontent">
         {uomHeader("Product Quality")}
@@ -119,21 +138,33 @@ class ProductQualityPage extends React.Component {
               <InformationalNote message={alertConstants.NO_CONFIG} />
             )}
 
+            {
+              <TreeView
+                aria-label="rich object"
+                // defaultCollapseIcon={<ExpandMoreIcon />}
+                // defaultExpanded={['root']}
+                // defaultExpandIcon={<ChevronRightIcon />}
+                sx={{ height: 110, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+              >
+                {renderTree(this.state.projStructure)}
+              </TreeView>
+            }
+
             {/* Product Quality Graph */}
-            {this.state.hasConfig &&
+            {/* {this.state.hasConfig &&
               this.props.teamCodeMetrics &&
               this.props.teamCodeMetrics.length != 0 && (
                 <ReverseTable
                   data={this.props.teamCodeMetrics}
                 />
-              )}
+              )} */}
 
             {/* No data alert */}
-            {this.state.hasConfig &&
+            {/* {this.state.hasConfig &&
               (!this.props.teamCodeMetrics ||
                 this.props.teamCodeMetrics.length == 0) && (
                 <InformationalNote message={alertConstants.NO_DATA} />
-              )}
+              )} */}
           </div>
         </div>
       </div>

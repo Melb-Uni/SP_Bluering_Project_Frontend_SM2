@@ -74,7 +74,7 @@ function getProjectStructure(teamKey) {
   return fetch(url, requestOptions)
     .then((response) => response.json())
     .then((jsonResponse) => {
-      return jsonResponse;
+      return jsonResponse.data;
     });
 }
 

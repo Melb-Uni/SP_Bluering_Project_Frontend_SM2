@@ -340,3 +340,17 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Commu
 * Modified meeting_ minutes table
 * Updated Migrations
 
+### 08/10/2021
+* Removed collapsable property from table - Communications page
+
+### 14/10/2021
+* Process Quality - github added
+
+### 19/10/2021
+* Project structure api added
+
+### 21/10/2021
+* Communication Changes
+* Product Quality Added
+* Process quality and Individual contribution jira
+

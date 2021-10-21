@@ -10,6 +10,9 @@ import { ToastContainer } from "react-toastify";
 import { Spin } from "antd";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
+import { formatLineChartData } from "../_utils/formatLineChartData.js";
+import { formatWeeklyCommit } from "../_utils/formatWeeklyCommit.js";
+import { userService } from "../_services";
 
 class ProcessQualityPage extends React.Component {
   constructor(props) {
@@ -34,9 +37,9 @@ class ProcessQualityPage extends React.Component {
 
   handleBtnGroupClick(e) {
     let selected = e.currentTarget.firstChild.innerHTML;
-    if (selected == commonConstants.CONFLUENCE) {
+    if (selected === commonConstants.CONFLUENCE) {
       this.props.getTeamConfluencePages(this.props.currentTeamKey);
-    } else if (selected == commonConstants.GITHUB) {
+    } else if (selected === commonConstants.GITHUB) {
       this.props.getTeamGithubCommits(this.props.currentTeamKey);
     } else {
       this.props.getTeamJiraTickets(this.props.currentTeamKey);
@@ -58,6 +61,7 @@ class ProcessQualityPage extends React.Component {
     }
     window.addEventListener("scroll", this.handleScroll);
   }
+
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -91,16 +95,19 @@ class ProcessQualityPage extends React.Component {
                 this.props.requestTeamJiraTickets
               }
             >
-              {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.CONFLUENCE && (
+              {
+                this.state.hasConfig &&
+                this.state.btnSelected === commonConstants.CONFLUENCE && (
                   <LineChart data={this.props.confluenceData} />
                 )}
-              {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.GITHUB && (
+              {
+                this.state.hasConfig &&
+                this.state.btnSelected === commonConstants.GITHUB && (
                   <LineChart data={this.props.githubData} />
                 )}
-              {this.state.hasConfig &&
-                this.state.btnSelected == commonConstants.JIRA && (
+              {
+                this.state.hasConfig &&
+                this.state.btnSelected === commonConstants.JIRA && (
                   <LineChart data={this.props.jiraData} />
                 )}
             </Spin>
@@ -128,7 +135,7 @@ function mapState(state) {
 
 const actionCreators = {
   getTeamConfluencePages: userActions.getTeamConfluencePages,
-  getTeamGithubCommits: userActions.getTeamGithubCommits,
+  getTeamGithubCommits: userActions.getWeeklyCommits,
   getTeamJiraTickets: userActions.getTeamJiraTickets,
 };
 

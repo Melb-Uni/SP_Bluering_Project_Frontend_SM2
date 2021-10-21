@@ -2,6 +2,7 @@ export const userService = {
   login,
   getTeamConfluencePages,
   getTeamGithubCommits,
+  getWeeklyCommits,
   getTeamJiraTickets,
   getTeamConfluenceMeeting,
   setTeamInfo,
@@ -36,6 +37,20 @@ function getTeamConfluencePages(teamKey) {
 function getTeamGithubCommits(teamKey) {
   let url = baseUrl + "/git/" + teamKey + "/commit_count";
 
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      return jsonResponse;
+    });
+}
+
+function getWeeklyCommits(teamKey) {
+  let url = baseUrl + "/git/commits_over_time/" + teamKey;
   const requestOptions = {
     method: "GET",
     credentials: "include",

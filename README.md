@@ -18,13 +18,9 @@ This project aims to have a software system that automatically gathers and summa
 
   * [3.2 API Documentation](#3.2)
 
-  * [3.3 Digital Prototype](#3.3)
-
 [4.0 Contributing / Extending](#4.0)
 
-  * [4.1 APIs](#4.1)
-
-  * [4.2 Web Application](#4.2)
+  * [4.1 Web Application](#4.1)
  
 [5.0 Architecture Diagrams](#5.0)
 
@@ -34,7 +30,7 @@ This project aims to have a software system that automatically gathers and summa
 
 ## Background
 
-Software Projects Subject (COMP90082) is the subject for students to perform necessary Software Engineering practices to successfully build a high-quality software product for real-world clients. To monitor, evaluate, and provide feedback to students, a supervisor will observe the Software Projects activities of a student team through the software development tools used and through student-supervisor meetings. The involved software development tools include a Version Control System (Git, GitHub/BitBucket/GitLab), a Task Management Tool (JIRA/Trello) and a Documentation tool (Confluence). Some processes would be considered to assess students include Software Testing, Code Review, Continuous Integration, and Deployment.
+Software Projects Subject (COMP90082) is the subject for students to perform necessary Software Engineering practices to successfully build a high-quality software product for real-world clients. To monitor, evaluate, and provide feedback to students, a supervisor will observe the Software Projects activities of a student team through the software development tools used and through student-supervisor meetings. The involved software development tools include a Version Control System (GitHub), a Task Management Tool (JIRA) and a Documentation tool (Confluence). Some processes would be considered to assess students include Software Testing, Code Review, Continuous Integration, and Deployment.
 
 ## Problem
 
@@ -63,10 +59,20 @@ The steps for installing and deploying Software Project easily is as follows:
 1. Install Python3.7 and MySQL  
 2. Install all packages needed pip install -r requirements.txt (Do not install another version of packages which can help you miss many unwanted mistakes) If multiple version of python are installed, use python3 and pip3 or python3.x and pip3.x instead.  
 3. Start MySQL server on localhost:3306, and create a database named "sp90013", i.e., run "CREATE DATABASE sp90013;"  
-4. Modify the MySQL username and password config in TeamSPBackend/settings/dev.py and TeamSPBackend/settings/prod.py (don't forget to modify 'DATABASES/default/TEST/PASSWORD' in prod.py)  
-5. Create MySQL tables python manage.py migrate. If the database changes, use command python manage.py makemigrations to update metadata of database, then python manage.py migrate to update database structure.  
-6. Start server python manage.py runserver,  the back-end is now running on http://127.0.0.1:8000/  
+4. Access the google drive link and download prod.py and dev.py (https://drive.google.com/drive/folders/1AvH8nSIdgpFkoqMevrh13s944urW1Nqt?usp=sharing)
+Place both the files in TeamSPBackend/Settings folder.
+5. Modify the MySQL username and password config in TeamSPBackend/settings/dev.py and TeamSPBackend/settings/prod.py (don't forget to modify 'DATABASES/default/TEST/PASSWORD' in prod.py)  
+6. Create MySQL tables python manage.py migrate. If the database changes, use command python manage.py makemigrations to update metadata of database, then python manage.py migrate to update database structure.  
+7. Start server python manage.py runserver,  the back-end is now running on http://127.0.0.1:8000/  
 
+### 3. Sample configuration:
+1. Jira URL : https://jira.cis.unimelb.edu.au:8444/projects/DA9001319/summary
+2. GitHub URL : https://github.com/Melb-Uni/SP_Bluering_Project_Frontend_SM2
+3. Give GitHub username
+4. For GitHub token generation:
+      1. Navigate to your Git account settings, then Developer Settings. Click the Personal access tokens menu, then click Generate new token.
+      2. Select repo and user as the scope. The token will be applicable for all the specified actions in your repositories.
+      3. Click Generate Token.
 
 ## Available Scripts
 
@@ -116,7 +122,6 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.0+Data
 
 
  <h1 id="3.2">3.2 API Documentation </h1>
-<h2> Sprint 0</h2>
 
 ### Subject:
 
@@ -143,48 +148,11 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.5+Jira
 https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1.6+Git
 
 
-## Sprint 1: 
-
-### Acceptance Test
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.1+Acceptance+Test
-
-### Confluence API Designer
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.2+Confluence+API+Design
-
-### Database Design
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.3+Database+Design
-
-### Data Sample
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.4+Data+Sample
-
-### Mock API Constructor
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.5+Mock+API+Construction+Instructions
-
-### Workload Separation
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2.6+Workload+Separation
-
-## Sprint 2:
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.3+Sprint+2%3A+API
-
-<h1 id="3.3"> 3.3 Digital Prototype </h1>
-
-Digital Prototype Package is able to download via below link:
-
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/4+Prototypes
-
-
 ## 1. Coordinator Homepage:
 
 In coordinator homepage: Shows the list of team members and their corresponding projects.
 A coordinator can Viewing Project, Importing Project and Viewing Specific Imported Project.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-1.Coordinatorhomepage 
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype 
 
 ### 1.1 Viewing Projects
 
@@ -206,56 +174,42 @@ As a coordinator, click on the specific project name to access the details about
 In process quality page includes statistical and/or graphical summaries on sprint velocity and burndown, documentation on Confluence, code review frequency and coverage and code commits. 
 For software engineering tools include GitHub, JIRA and Confluence.
 Here is the link to the UI of the process quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-3.Processquality
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 3. Viewing Team's Product Quality
-In product quality page includes statistical and/or graphical summaries by code analysed tool (TBC) on: Code quality, Test code quality. For Software Engineering tools include Git (Team's choice of GitHub, GitLab or Bitbucket).
-Here is the link to the UI of the product quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-4.Productquality 
+In product quality page includes statistical and/or graphical summaries by code analysed tool (TBC) on: Code quality, Test code quality. For Software Engineering tools include Git (GitHub).
+Here is the link to the UI of the product quality page.
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 4. Viewing Team's Communication Quality
 
 In communication quality page includes statistical and/or graphical summaries on comments from engineering tools which are GitHub, Confluence.
 Here is the link to the UI of the current communication quality page. 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-5.Communicationquality
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 5. Viewing Team Individuals' Contribution
 
 In individuals' contribution page includes statistical and/or graphical summaries of every team member's activities which are: task completion on JIRA, Code reviews on Git and Documentation contribution on Confluence.
 For software engineering tools include Git (Team's choice of GitHub, GitLab or BitBucket), JIRA, and Confluence.
 Here is the link to the UI of the current individuals' contribution page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-6.Individualcontributionpage
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 6. Team Configuration Page 
 
 As a coordinator, you may update the team configuration by clicking on the 'Configuration' button on the sidebar. Here the URLs for each of the team's tools should be set (currently not implemented). The account names/ emails for each team member's Slack and github accounts must be set in order to access their individual details in the 'Individual Contribution' section.
 Here is the link to the UI of the current configuration page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team#DesignupdateFrontendteam-7.Configuration
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 ## 7. Login Page
 
 On the Login page, you can log in to the SP project by entering your email address and password. 
 Here is the link to the UI of the current login page.
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/Design+update+-+Front-end+team+S2#DesignupdateFrontendteamS2-8.Loginpage
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/4.+Design+Prototype
 
 
 <h1 id="4.0"> 4.0 Contributing / Extending </h1>
 
-<h1 id="4.1"> 4.1 APIs </h1>
-
-### API versions
-
-Sprint 0 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.1+Sprint+0%3A+API
-
-Sprint 1 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.2+Sprint+1%3A+API
-
-Sprint 2 API:
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/6.3+Sprint+2%3A+API
-
-
-<h1 id="4.2"> 4.2 Web Application </h1>
+<h1 id="4.1"> 4.1 Web Application </h1>
 
 ## Calling APIs
 
@@ -330,76 +284,59 @@ This page is the entry page to an SP project that requires user identificat
 
 ### Use Case Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.1+Use+Case+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.1.+Use+Case+Diagram
 
 ### Domain Model
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.2+Domain+Model
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.2.+Domain+Model
 
 ### Process Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.3+Process+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.3.+Process+Diagram
 
 ### Communication Diagram
 
-https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM1SP/3.4+Communication+Diagram
+https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Communication+Diagram
 
 <h1 id="6.0"> 6.0 Change Log </h1> 
 
+### 25/08/2021
+* Initial commit
 
-## Version 1: (2021.April.02)
-### 2021.3.27  
-•	Initial GitHub Project created  
-•	Digital Prototype 1.0 Completed  
-•	Digital Prototype 2.0 Completed according to Client’s feedback  
-### 2021.4.02  
-•	Created Data Sample: JSON format in an API level for each API  
+### 30/08/2021
+* Updated robots.txt
 
+### 03/09/2021
+* Added .gitignore
 
-## Version 2: (2021.April.30)
-### 2021.4.22  
-•	Created configure page  
-### 2021.4.24  
-•	Communication page UI was finished   
-•	Updated UI and added showing history function for configure page  
-### 2021.4.26  
-•	Finished project overview page  
-### 2021.4.27  
-•	Changed layout for Individual Page  
-•	Coordinator homepage completed a part of API connections with backend   
-•	Communication quality page can interact with backend locally  
-### 2021.4.28  
-•	Coordinator Homepage UI updated  
-•	Product quality completed API connections  
-•	Updated Coordinator Homepage UI  
-### 2021.4.29  
-•	Updated API code for Individual Contribution Page  
-•	Coordinator Home page removed box shadow  
-### 2021.4.30  
-•	Modified project homepage  
-•	Coordinator homepage local API deployment  
-•	Project homepage API code completed  
+### 08/09/2021
+* Updated settings
 
+### 09/09/2021
+* Modified Individual Contribution graph
 
-## Version 3: (2021.May.31)
+### 10/09/2021
+* Setting chart max range
+* Remove .pem file
 
-### 2021.5.01  
-•	Bug fix communication quality page  
-### 2021.5.05  
-•	Product quality API unify testing with backend  
+### 12/09/2021
+* Fixed confluence data bug
+* GitHub percentage calculation
+* Jira percentage calculation
 
-### 2021.5.06  
-•	Bugfix communication quality page  
-### 2021.5.07  
-•	Bugfix communication quality page  
-•	Added saving git username and password function  
-•	Changed the context of the column of meeting minutes to clickable URLs  
-### 2021.5.08  
-•	Completed Sprint 2 communication quality page  
-### 2021.5.13  
-•	Coordinator Homepage UI added a drawer for showing student information  
-•	Updated API for Configure page  
-### 2021.5.28
-•	Added input check   
-•	Added a no_meeting_minutes alert message  
-•	Updated data sample  
+### 16/09/2021
+* Added GitHub individual contributions- Frontend
+* Added Added GitHub individual contributions- Backend
+
+### 17/09/2021
+* Integrated Jira Individual contributions
+* Fixing Jira url bug
+
+### 30/09/2021
+* Configuration UI change (Added tool tip)
+
+### 07/10/2021
+* Added Sprint to Communications page
+* Modified meeting_ minutes table
+* Updated Migrations
+

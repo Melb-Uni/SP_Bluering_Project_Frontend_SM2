@@ -3,36 +3,23 @@ import Banner from "../_utils/Banner";
 import uomHeader from "../header/uomheader";
 import { userActions } from "../_actions";
 import { connect } from "react-redux";
-import Table from "../_utils/communicationTable";
+import Table from "../_utils/Table";
 import { alertConstants } from "../_constants";
 import { InformationalNote } from "../_utils/Alert";
-
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
-
-
 
 class CommunicationPage extends React.Component {
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       columns: [
         {
           name: "Meeting Name",
-          selector: row => row.title,
+          selector: "title",
         },
-        {
-          name: "Sprint",
-          selector: row => row.sprint,
-        },
+
         {
           name: "Meeting Minutes",
-          selector: row => row.link,
+          selector: "link",
           cell: (row) => <a href={row.link}>{row.link}</a>,
         },
       ],
@@ -40,7 +27,7 @@ class CommunicationPage extends React.Component {
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
     };
   }
- 
+
   componentDidMount() {
     if (this.state.hasConfig) {
       this.props.getTeamConfluenceMeeting(this.props.currentTeamKey);
@@ -62,17 +49,17 @@ class CommunicationPage extends React.Component {
               (!this.props.confluenceData ||
                 this.props.confluenceData.length == 0) && (
                 <InformationalNote
-                  message={alertConstants.NO_MEETING_MINUTES} />
+                  message={alertConstants.NO_MEETING_MINUTES}
+                />
               )}
             {this.state.hasConfig &&
               this.props.confluenceData &&
               this.props.confluenceData.length != 0 && (
-                this.props.confluenceData[3] &&
                 <Table
-                columns={this.state.columns}
-                data={this.props.confluenceData}
-                width={"80vw"}
-                height={"50vh"} 
+                  columns={this.state.columns}
+                  data={this.props.confluenceData}
+                  width={"80vw"}
+                  height={"50vh"}
                 />
               )}
           </div>

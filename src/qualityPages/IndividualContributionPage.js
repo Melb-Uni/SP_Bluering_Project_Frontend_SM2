@@ -45,15 +45,17 @@ class IndividualContributionPage extends React.Component {
   async componentDidMount() {
     if (this.state.hasConfig) {
       let jira_proj = (this.props.teamInfo[this.props.currentTeamKey].jiraUrl.split('/'))[4];
-      const [confluenceData, gitHubData, jiraData] = await Promise.all([
+      const [confluenceData, gitHubData, jiraData, gitHubDataModifs] = await Promise.all([
         userService.getConfluenceIndividualData(this.props.currentTeamKey),
         userService.getGithubIndividualData(this.props.currentTeamKey),
-        userService.getJiraIndividualData(jira_proj)
+        userService.getJiraIndividualData(jira_proj),
+        userService.getGithubIndividualDataByModifs(this.props.currentTeamKey),
       ]);
       this.setState({
         confluenceData: formatDonutChartData(confluenceData),
         githubData: gitHubData.data,
         jiraData: formatDonutChartData(jiraData),
+        gitHubDataModifs: gitHubDataModifs.data,
         loader: false
       });
     }
@@ -106,6 +108,7 @@ class IndividualContributionPage extends React.Component {
                           data3={this.state.confluenceData}
                           dataLabel={"Edited Pages"}
                           jiraData={this.state.jiraData}
+                          gitHubDataModifs={this.state.gitHubDataModifs}
                         />
                       }
                     </Col>

@@ -3,24 +3,16 @@ import Banner from "../_utils/Banner";
 import uomHeader from "../header/uomheader";
 import { userActions } from "../_actions";
 import { connect } from "react-redux";
-import Table from "../_utils/Table";
+import Table from "../_utils/communicationTable";
 import { alertConstants } from "../_constants";
 import { InformationalNote } from "../_utils/Alert";
 
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { StyledEngineProvider } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 
 
 
@@ -32,15 +24,15 @@ class CommunicationPage extends React.Component {
       columns: [
         {
           name: "Meeting Name",
-          selector: "title",
+          selector: row => row.title,
         },
         {
           name: "Sprint",
-          selector: "sprint",
+          selector: row => row.sprint,
         },
         {
           name: "Meeting Minutes",
-          selector: "link",
+          selector: row => row.link,
           cell: (row) => <a href={row.link}>{row.link}</a>,
         },
       ],
@@ -62,8 +54,6 @@ class CommunicationPage extends React.Component {
 
         <div role="main">
           <div className="page-inner">
-
-
             <Banner projName={this.props.currentTeamName} />
             {!this.state.hasConfig && (
               <InformationalNote message={alertConstants.NO_CONFIG} />

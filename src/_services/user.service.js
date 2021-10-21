@@ -15,6 +15,8 @@ export const userService = {
   deleteImportedProject,
   getConfluenceSpaceByKeyWord,
   getTeamMemberList,
+  getProjectStructure,
+  getGithubIndividualDataByModifs
 };
 
 const baseUrl = "/api/v1";
@@ -49,6 +51,20 @@ function getTeamGithubCommits(teamKey) {
     });
 }
 
+function getGithubIndividualDataByModifs(teamKey) {
+  let url = baseUrl + "/git/get_contribution_by_code_modification/" + teamKey;
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      return jsonResponse;
+    });
+}
+
 function getWeeklyCommits(teamKey) {
   let url = baseUrl + "/git/commits_over_time/" + teamKey;
   const requestOptions = {
@@ -60,6 +76,20 @@ function getWeeklyCommits(teamKey) {
     .then((response) => response.json())
     .then((jsonResponse) => {
       return jsonResponse;
+    });
+}
+
+function getProjectStructure(teamKey) {
+  let url = baseUrl + "/git/get_proj_structure/" + teamKey;
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      return jsonResponse.data;
     });
 }
 

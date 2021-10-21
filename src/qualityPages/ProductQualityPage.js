@@ -7,6 +7,15 @@ import { userActions } from "../_actions";
 import { InformationalNote } from "../_utils/Alert";
 import { alertConstants } from "../_constants";
 import ReverseTable from "../_utils/ReverseTable";
+import { userService } from "../_services";
+// import TreeView from '@mui/lab/TreeView';
+// import TreeItem from '@mui/lab/TreeItem';
+import TreeView from "@material-ui/lab/TreeView";
+import TreeItem from "@material-ui/lab/TreeItem";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from "@material-ui/core/Grid";
 
 class ProductQualityPage extends React.Component {
   constructor(props) {
@@ -38,13 +47,25 @@ class ProductQualityPage extends React.Component {
       ],
       hasConfig:
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
+      projStructure: {},
+      loader: true,
+      metrics: {
+        lineCount: 0,
+        commentCount: 0,
+        emptyLineCount: 0
+      }
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.state.hasConfig) {
       // Gets data for product quality graph
-      this.props.getTeamCodeMetrics(this.props.currentTeamKey);
+      // this.props.getTeamCodeMetrics(this.props.currentTeamKey);
+      const projStructure = await userService.getProjectStructure(this.props.currentTeamKey);
+      this.setState({
+        projStructure: projStructure,
+        loader: false
+      })
     }
   }
 
@@ -106,11 +127,29 @@ class ProductQualityPage extends React.Component {
         },
       },
     };
+
+    const renderTree = (nodes) => (
+      <TreeItem
+        key={nodes.id}
+        nodeId={nodes.id}
+        label={nodes.name}
+        onClick={() => {
+          this.setState({
+            metrics: nodes.metrics
+          })
+        }}
+      >
+        {Array.isArray(nodes.children)
+          ? nodes.children.map((node) => renderTree(node))
+          : null}
+      </TreeItem>
+    );
+
     return (
       <div className="uomcontent">
         {uomHeader("Product Quality")}
         <div role="main">
-          <div className="page-inner">
+          <div className="page-inner" style={{ textAlign: "center" }} >
             {/* Project Name */}
             <Banner projName={this.props.currentTeamName} />
 
@@ -119,24 +158,87 @@ class ProductQualityPage extends React.Component {
               <InformationalNote message={alertConstants.NO_CONFIG} />
             )}
 
+
+
+            {
+              this.state.hasConfig &&
+                this.state.loader
+                ? <CircularProgress size={100} />
+                : <Grid
+                  spacing={2}
+                  container
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Grid item xs={6} style={{ maxHeight: '60vh', overflow: 'auto' }}>
+                    <TreeView
+                      aria-label="rich object"
+                      defaultCollapseIcon={<ExpandMoreIcon />}
+                      defaultExpanded={[this.state.projStructure.id]}
+                      defaultExpandIcon={<ChevronRightIcon />}
+                      sx={{ height: 110, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+                    >
+                      {renderTree(this.state.projStructure)}
+                    </TreeView>
+                  </Grid>
+                  <Grid
+                    xs={6}
+                    item
+                    container
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center">
+                    <Grid xs={12} item><h3>Metrics</h3></Grid>
+                    <Grid
+                      container
+                      item
+                      direction="column"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      xs={6}
+                      spacing={2}
+                    >
+                      <Grid item >Code Lines Count</Grid>
+                      <Grid item >Comment Lines Count</Grid>
+                      <Grid item >Empty Lines Count</Grid>
+                    </Grid>
+                    <Grid
+                      container
+                      item
+                      direction="column"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      xs={6}
+                      spacing={2}
+                    >
+                      <Grid item >{this.state.metrics.lineCount}</Grid>
+                      <Grid item >{this.state.metrics.commentCount}</Grid>
+                      <Grid item >{this.state.metrics.emptyLineCount}</Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+            }
+
             {/* Product Quality Graph */}
-            {this.state.hasConfig &&
+            {/* {this.state.hasConfig &&
               this.props.teamCodeMetrics &&
               this.props.teamCodeMetrics.length != 0 && (
                 <ReverseTable
                   data={this.props.teamCodeMetrics}
                 />
-              )}
+              )} */}
 
             {/* No data alert */}
-            {this.state.hasConfig &&
+            {/* {this.state.hasConfig &&
               (!this.props.teamCodeMetrics ||
                 this.props.teamCodeMetrics.length == 0) && (
                 <InformationalNote message={alertConstants.NO_DATA} />
-              )}
+              )} */}
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

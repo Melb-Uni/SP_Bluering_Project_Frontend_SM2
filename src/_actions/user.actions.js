@@ -7,6 +7,7 @@ import { formatDonutChartData } from "../_utils/formatDonutChartData.js";
 import { unixToDate } from "../_utils/unixToDate.js";
 import { failureToast } from "../_utils/toast";
 import { successToast } from "../_utils/toast";
+import { formatJiraTicket } from "../_utils/formatJiraTicket.js";
 
 export const userActions = {
   login,
@@ -166,7 +167,7 @@ function getTeamJiraTickets(teamKey) {
           dispatch(
             success(
               userConstants.GET_TEAM_JIRA_TICKETS_SUCCESS,
-              formatLineChartData(response)
+              formatJiraTicket(response)
             )
           );
         } else {

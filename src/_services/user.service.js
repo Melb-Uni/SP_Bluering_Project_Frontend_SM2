@@ -15,7 +15,8 @@ export const userService = {
   deleteImportedProject,
   getConfluenceSpaceByKeyWord,
   getTeamMemberList,
-  getProjectStructure
+  getProjectStructure,
+  getGithubIndividualDataByModifs
 };
 
 const baseUrl = "/api/v1";
@@ -38,6 +39,20 @@ function getTeamConfluencePages(teamKey) {
 function getTeamGithubCommits(teamKey) {
   let url = baseUrl + "/git/" + teamKey + "/commit_count";
 
+  const requestOptions = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      return jsonResponse;
+    });
+}
+
+function getGithubIndividualDataByModifs(teamKey) {
+  let url = baseUrl + "/git/get_contribution_by_code_modification/" + teamKey;
   const requestOptions = {
     method: "GET",
     credentials: "include",

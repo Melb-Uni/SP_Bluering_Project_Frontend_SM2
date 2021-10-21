@@ -15,7 +15,7 @@ import TreeItem from "@material-ui/lab/TreeItem";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Grid from "@material-ui/core/Grid";
 
 class ProductQualityPage extends React.Component {
   constructor(props) {
@@ -49,6 +49,11 @@ class ProductQualityPage extends React.Component {
         this.props.teamInfo && this.props.teamInfo[this.props.currentTeamKey],
       projStructure: {},
       loader: true,
+      metrics: {
+        lineCount: 0,
+        commentCount: 0,
+        emptyLineCount: 0
+      }
     };
   }
 
@@ -124,12 +129,16 @@ class ProductQualityPage extends React.Component {
     };
 
     const renderTree = (nodes) => (
-      <TreeItem className={{
-        height: "50px",
-        flexGrow: 1,
-        maxWidth: 400,
-        overflow: "auto"
-      }} key={nodes.id} nodeId={nodes.id} label={nodes.name}>
+      <TreeItem
+        key={nodes.id}
+        nodeId={nodes.id}
+        label={nodes.name}
+        onClick={() => {
+          this.setState({
+            metrics: nodes.metrics
+          })
+        }}
+      >
         {Array.isArray(nodes.children)
           ? nodes.children.map((node) => renderTree(node))
           : null}
@@ -149,25 +158,67 @@ class ProductQualityPage extends React.Component {
               <InformationalNote message={alertConstants.NO_CONFIG} />
             )}
 
+
+
             {
               this.state.hasConfig &&
-              (this.state.loader
+                this.state.loader
                 ? <CircularProgress size={100} />
-                : <TreeView
-                  aria-label="rich object"
-                  className={{
-                    height: "50px",
-                    flexGrow: 1,
-                    maxWidth: 400,
-                    overflow: "auto"
-                  }}
-                  defaultCollapseIcon={<ExpandMoreIcon />}
-                  // defaultExpanded={['root']}
-                  defaultExpandIcon={<ChevronRightIcon />}
-                  sx={{ height: 110, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+                : <Grid
+                  spacing={2}
+                  container
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
                 >
-                  {renderTree(this.state.projStructure)}
-                </TreeView>)
+                  <Grid item xs={6} style={{ maxHeight: '60vh', overflow: 'auto' }}>
+                    <TreeView
+                      aria-label="rich object"
+                      defaultCollapseIcon={<ExpandMoreIcon />}
+                      defaultExpanded={[this.state.projStructure.id]}
+                      defaultExpandIcon={<ChevronRightIcon />}
+                      sx={{ height: 110, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+                    >
+                      {renderTree(this.state.projStructure)}
+                    </TreeView>
+                  </Grid>
+                  <Grid
+                    xs={6}
+                    item
+                    container
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center">
+                    <Grid xs={12} item><h3>Metrics</h3></Grid>
+                    <Grid
+                      container
+                      item
+                      direction="column"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      xs={6}
+                      spacing={2}
+                    >
+                      <Grid item >Code Lines Count</Grid>
+                      <Grid item >Comment Lines Count</Grid>
+                      <Grid item >Empty Lines Count</Grid>
+                    </Grid>
+                    <Grid
+                      container
+                      item
+                      direction="column"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      xs={6}
+                      spacing={2}
+                    >
+                      <Grid item >{this.state.metrics.lineCount}</Grid>
+                      <Grid item >{this.state.metrics.commentCount}</Grid>
+                      <Grid item >{this.state.metrics.emptyLineCount}</Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+
             }
 
             {/* Product Quality Graph */}
@@ -187,7 +238,7 @@ class ProductQualityPage extends React.Component {
               )} */}
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }

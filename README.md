@@ -26,6 +26,8 @@ This project aims to have a software system that automatically gathers and summa
 
 [6.0 Change Log](#6.0)
 
+[7.0 API Testing](#7.0)
+
 <h1 id="1.0"> 1.0 Project Overview </h1>
 
 ## Background
@@ -353,4 +355,8 @@ https://confluence.cis.unimelb.edu.au:8443/display/COMP900822021SM2SP/3.4.+Commu
 * Communication Changes
 * Product Quality Added
 * Process quality and Individual contribution jira
+* Communication Sprint Dropdown
 
+<h1 id="7.0"> 7.0 API Testing </h1>
+Check the following link for API curl commands
+https://documenter.getpostman.com/view/4023034/UUxtEAK2#77262652-9857-44cc-8ce2-0f098200b6f2
